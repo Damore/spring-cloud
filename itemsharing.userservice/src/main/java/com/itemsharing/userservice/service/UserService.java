@@ -1,11 +1,11 @@
 package com.itemsharing.userservice.service;
 
-import com.itemsharing.userservice.model.User;
+import com.itemsharing.userservice.model.Usuario;
 
 public interface UserService {
 	
-	User createUser(User user);
+	Usuario createUser(Usuario user);
 	
-	User getUserByUsername(String username);
+	Usuario getUserByUsername(String username);
 
 }

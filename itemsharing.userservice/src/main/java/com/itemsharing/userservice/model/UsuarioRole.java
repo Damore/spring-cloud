@@ -9,22 +9,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class UserRole {
+public class UsuarioRole {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	public UserRole() {}
+	public UsuarioRole() {}
 	
-	public UserRole(User user, Role role) {
+	public UsuarioRole(Usuario user, Role role) {
 		this.user = user;
 		this.role = role;
 	}
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id")
-	private User user;
+	@JoinColumn(name = "usuario_id")
+	private Usuario user;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "role_id")
@@ -38,11 +38,11 @@ public class UserRole {
 		this.id = id;
 	}
 
-	public User getUser() {
+	public Usuario getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Usuario user) {
 		this.user = user;
 	}
 

@@ -6,7 +6,7 @@ databaseChangeLog:
     context: local
     changes:
      - createTable:
-        tableName: user
+        tableName: usuario
         columns:
         - column:
             name: id
@@ -16,16 +16,16 @@ databaseChangeLog:
               primaryKey: true
               nullable: false
         - column:
-            name: firstname
+            name: first_name
             type: varchar(255)
         - column:
-            name: lastName
+            name: last_name
             type: varchar(255)
         - column:
             name: email
             type: varchar(255)
         - column:
-            name: joinDate
+            name: join_date
             type: timestamp
         - column:
             name: username
@@ -59,7 +59,7 @@ databaseChangeLog:
     context: local
     changes:                  
      - createTable:
-        tableName: user_role
+        tableName: usuario_role
         columns:
         - column:
             name: id
@@ -69,15 +69,15 @@ databaseChangeLog:
               primaryKey: true
               nullable: false
         - column:
-            name: user_id
+            name: usuario_id
             type: bigint
             constraints:
               nullable: true
-              foreignKeyName: fk_id_user_user_role
-              baseColumnNames: user_id
-              baseTableName: user_role
+              foreignKeyName: fk_id_usuario_usuario_role
+              baseColumnNames: usuario_id
+              baseTableName: usuario_role
               referencedColumnNames: id
-              referencedTableName: user
+              referencedTableName: usuario
               onDelete: CASCADE
               onUpdate: CASCADE
         - column:
@@ -85,9 +85,9 @@ databaseChangeLog:
             type: bigint
             constraints:
               nullable: true
-              foreignKeyName: fk_id_role_user_role
+              foreignKeyName: fk_id_role_usuario_role
               baseColumnNames: role_id
-              baseTableName: user_role
+              baseTableName: usuario_role
               referencedColumnNames: id
               referencedTableName: role
               onDelete: CASCADE
@@ -125,12 +125,12 @@ databaseChangeLog:
             name: add_date
             type: timestamp
         - column:
-            name: user_id
+            name: usuario_id
             type: bigint
             constraints:
               nullable: true
-              foreignKeyName: fk_id_user_item
+              foreignKeyName: fk_id_usuario_item
               referencedColumnNames: id
-              referencedTableName: user
+              referencedTableName: usuario
               onDelete: CASCADE
               onUpdate: CASCADE              

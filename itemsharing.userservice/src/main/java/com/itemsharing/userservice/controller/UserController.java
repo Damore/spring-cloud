@@ -2,10 +2,12 @@ package com.itemsharing.userservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.itemsharing.userservice.model.User;
+import com.itemsharing.userservice.model.Usuario;
 import com.itemsharing.userservice.service.UserService;
 
 @RestController
@@ -16,8 +18,13 @@ public class UserController {
 	private UserService userService;
 	
 	@RequestMapping("/{username}")
-	public User getUserByUsername(@PathVariable String username) {
+	public Usuario getUserByUsername(@PathVariable String username) {
 		return userService.getUserByUsername(username);
+	}
+	
+	@PostMapping
+	public Usuario createUser(@RequestBody Usuario user) {
+		return userService.createUser(user);
 	}
 	
 }

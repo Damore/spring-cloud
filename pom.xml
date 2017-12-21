@@ -25,9 +25,9 @@
 	</properties>
 
 	<modules>
-		<module>userservice</module>
-		<module>itemservice</module>
 		<module>itemsharing.userservice</module>
+		<module>itemsharing.itemservice</module>
+		<module>itemsharing.configserver</module>
 	</modules>
 
 	<dependencies>

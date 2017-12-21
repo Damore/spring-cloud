@@ -18,9 +18,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class User implements UserDetails {
+public class Usuario implements UserDetails {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -37,7 +38,8 @@ public class User implements UserDetails {
 	
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<UserRole> userRoles = new HashSet<>();
+	@JsonIgnore
+	private Set<UsuarioRole> userRoles = new HashSet<>();
 
 
 	public Long getId() {
@@ -110,12 +112,12 @@ public class User implements UserDetails {
 	}
 
 
-	public Set<UserRole> getUserRoles() {
+	public Set<UsuarioRole> getUserRoles() {
 		return userRoles;
 	}
 
 
-	public void setUserRoles(Set<UserRole> userRoles) {
+	public void setUserRoles(Set<UsuarioRole> userRoles) {
 		this.userRoles = userRoles;
 	}
 
