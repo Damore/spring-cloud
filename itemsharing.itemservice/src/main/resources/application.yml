@@ -1,28 +1,32 @@
-server:
-  port: 8082
-
-liquibase:
-  contexts: local
-  enabled: false
-
-spring:
-  jpa:
-    hibernate:
-      ddl-auto: none
-    show-sql: true
-    properties:
-      jadira:
-        usertype:
-          autoRegisterUserTypes: true
-
-  datasource:
-    url: jdbc:postgresql://localhost:59595/itemsharingdatabase
-    username: "postgres"
-    password: "root"
-    driver-class-name: org.postgresql.Driver
-    
-
-security:
-  basic:
-    enabled: false
-
+#server:
+#  port: 8082
+#
+#liquibase:
+#  contexts: local
+#  enabled: false
+#
+#spring:  
+#  jpa:
+#    hibernate:
+#      ddl-auto: none
+#    show-sql: true
+#    properties:
+#      jadira:
+#        usertype:
+#          autoRegisterUserTypes: true
+#
+#  datasource:
+#    url: jdbc:postgresql://localhost:59595/itemsharingdatabase
+#    username: "postgres"
+#    password: "root"
+#    driver-class-name: org.postgresql.Driver
+#    
+#  profiles:
+#    active:
+#    - dev
+#    
+#
+#security:
+#  basic:
+#    enabled: false
+#    

@@ -5,11 +5,11 @@
     <artifactId>itemsharing</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.itemsharing.itemservice</groupId>
-  <artifactId>itemsharing.itemservice</artifactId>
-  <name>itemservice</name>
-  <description>Item service for item sharing app</description>
-  
+  <groupId>com.itemsharing.eruekaserver</groupId>
+  <artifactId>itemsharing.eurekaserver</artifactId>
+  <name>eurekaserver</name>
+  <description>eureka service for item sharing app</description>
+  <packaging>jar</packaging>
   <dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -29,37 +29,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-security</artifactId>
+			<artifactId>spring-cloud-starter-eureka-server</artifactId>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-client</artifactId>
-		</dependency>
-		
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-		</dependency>
-
-		<!-- LIQUIBASE -->
-		<dependency>
-			<groupId>org.liquibase</groupId>
-			<artifactId>liquibase-core</artifactId>
-		</dependency>
-
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -76,6 +48,5 @@
 			</plugin>
 		</plugins>
 	</build>
-  
   
 </project>

@@ -12,3 +12,5 @@ spring:
           search-paths: userservice, itemservice
         encrypt:
           enabled: false
+
+          
