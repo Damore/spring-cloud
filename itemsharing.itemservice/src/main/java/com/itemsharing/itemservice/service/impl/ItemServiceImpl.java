@@ -3,6 +3,7 @@ package com.itemsharing.itemservice.service.impl;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,8 @@ import com.itemsharing.itemservice.model.Usuario;
 import com.itemsharing.itemservice.repository.ItemRepository;
 import com.itemsharing.itemservice.service.ItemService;
 import com.itemsharing.itemservice.service.UserService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -88,9 +91,36 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
+	@HystrixCommand(commandProperties = {@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds", value = "1000")},
+	fallbackMethod = "buildFallbackUser",
+	threadPoolKey = "itemByUserThreadPool",
+	threadPoolProperties = {@HystrixProperty(name="coreSize", value = "30"),
+							@HystrixProperty(name="maxQueueSize", value = "10")})
 	public Usuario getUsuarioByUsername(String username) {
 //		return userService.findByUsername(username);
+		 randomlyRunLong();
 		return userFeignClient.getUserByUsername(username);
+	}
+	
+	private void randomlyRunLong() {
+		Random random = new Random();
+		int randomNum = random.nextInt((3-1)+1)+1;
+		if(randomNum == 3) sleep();
+	}
+	
+	private void sleep() {
+		try {
+			Thread.sleep(11000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private Usuario buildFallbackUser(String username) {
+		Usuario usuario = new Usuario();
+		usuario.setId(123123L);
+		usuario.setFirstName("Usuário Temporário");
+		return usuario;
 	}
 
 }
