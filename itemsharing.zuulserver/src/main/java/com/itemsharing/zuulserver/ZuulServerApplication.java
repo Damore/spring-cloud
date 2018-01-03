@@ -11,8 +11,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.itemsharing.zuulserver.util.UserContextInterceptor;
 
-import antlr.collections.List;
-
 @SpringBootApplication
 @EnableZuulProxy
 public class ZuulServerApplication {
