@@ -1,0 +1,31 @@
+server:
+  port: 5555
+
+liquibase:
+  contexts: local
+  enabled: true
+
+security:
+  basic:
+    enabled: false
+    
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+zuul:
+  routes:
+    userservice: /user/**
+    itemservice: /item/**
+  ignored-service: '*'
+  prefix: /api    
+  
+    
+logging:
+  level:
+    com.itemsharing: DEBUG

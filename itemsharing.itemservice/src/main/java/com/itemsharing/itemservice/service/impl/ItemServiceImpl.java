@@ -98,7 +98,7 @@ public class ItemServiceImpl implements ItemService {
 							@HystrixProperty(name="maxQueueSize", value = "10")})
 	public Usuario getUsuarioByUsername(String username) {
 //		return userService.findByUsername(username);
-		 randomlyRunLong();
+//		 randomlyRunLong();
 		return userFeignClient.getUserByUsername(username);
 	}
 	
