@@ -1,0 +1,136 @@
+databaseChangeLog:
+- changeSet:
+    id: 1
+    comments: Criação da database
+    author: gabriel
+    context: local
+    changes:
+     - createTable:
+        tableName: usuario
+        columns:
+        - column:
+            name: id
+            type: bigserial
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: first_name
+            type: varchar(255)
+        - column:
+            name: last_name
+            type: varchar(255)
+        - column:
+            name: email
+            type: varchar(255)
+        - column:
+            name: join_date
+            type: timestamp
+        - column:
+            name: username
+            type: varchar(255)
+        - column:
+            name: password
+            type: varchar(255)
+- changeSet:
+    id: 2
+    comments: Criação da database
+    author: gabriel
+    context: local
+    changes:      
+     - createTable:
+        tableName: role
+        columns:
+        - column:
+            name: id
+            type: bigserial
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: name
+            type: varchar(255)
+- changeSet:
+    id: 3
+    comments: Criação da database
+    author: gabriel
+    context: local
+    changes:                  
+     - createTable:
+        tableName: usuario_role
+        columns:
+        - column:
+            name: id
+            type: bigserial
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: usuario_id
+            type: bigint
+            constraints:
+              nullable: true
+              foreignKeyName: fk_id_usuario_usuario_role
+              baseColumnNames: usuario_id
+              baseTableName: usuario_role
+              referencedColumnNames: id
+              referencedTableName: usuario
+              onDelete: CASCADE
+              onUpdate: CASCADE
+        - column:
+            name: role_id
+            type: bigint
+            constraints:
+              nullable: true
+              foreignKeyName: fk_id_role_usuario_role
+              baseColumnNames: role_id
+              baseTableName: usuario_role
+              referencedColumnNames: id
+              referencedTableName: role
+              onDelete: CASCADE
+              onUpdate: CASCADE
+        
+- changeSet:
+    id: 4
+    comments: Criação da database
+    author: gabriel
+    context: local
+    changes:          
+     - createTable:
+        tableName: item
+        columns:
+        - column:
+            name: id
+            type: bigserial
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: name
+            type: varchar(255)
+        - column:
+            name: status
+            type: varchar(255)
+        - column:
+            name: description
+            type: varchar(255) 
+        - column:
+            name: item_condition
+            type: varchar(255)
+        - column:
+            name: add_date
+            type: timestamp
+        - column:
+            name: usuario_id
+            type: bigint
+            constraints:
+              nullable: true
+              foreignKeyName: fk_id_usuario_item
+              referencedColumnNames: id
+              referencedTableName: usuario
+              onDelete: CASCADE
+              onUpdate: CASCADE              

@@ -32,6 +32,7 @@
 		<module>itemsharing.configserver</module>
 		<module>itemsharing.eurekaserver</module>
 		<module>itemsharing.zuulserver</module>
+		<module>itemhsaring.authorizationserver</module>
 	</modules>
 
 	<dependencies>
