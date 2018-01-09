@@ -22,7 +22,11 @@
 #    driver-class-name: org.postgresql.Driver
 #    
 #
-#security:
-#  basic:
-#    enabled: false
-#
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8901/user
+
+signing:
+  key: 345345fsdgsf5345
+

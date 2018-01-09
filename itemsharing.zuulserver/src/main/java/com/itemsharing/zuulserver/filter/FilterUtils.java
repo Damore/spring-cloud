@@ -8,7 +8,7 @@ import com.netflix.zuul.context.RequestContext;
 public class FilterUtils {
 
 	public static final String CORRELATION_ID = "is-correlation-id";
-	public static final String AUTH_TOKEN = "is-auth-token";
+	public static final String AUTH_TOKEN = "Authorization";
 	public static final String USER_ID = "is-user-id";
 	public static final String PRE_FILTER_TYPE = "pre";
 	public static final String POST_FILTER_TYPE = "post";

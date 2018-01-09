@@ -24,11 +24,15 @@ public class TrackingFilter extends ZuulFilter {
 
 	@Override
 	public Object run() {
-		if (isCorrelationIdPresent()) {
-			logger.debug("is-correlation-id found in tracking filter: {}", filterUtils.getCorrelationId());
-		} else {
-			filterUtils.setCorrelationId(generateCorrelationId());
-			logger.debug("is-correlation-id generated in tracking filter: {}", filterUtils.getCorrelationId());
+//		if (isCorrelationIdPresent()) {
+//			logger.debug("is-correlation-id found in tracking filter: {}", filterUtils.getCorrelationId());
+//		} else {
+//			filterUtils.setCorrelationId(generateCorrelationId());
+//			logger.debug("is-correlation-id generated in tracking filter: {}", filterUtils.getCorrelationId());
+//		}
+		
+		if(isAuthTokenPresent()) {
+			logger.debug("Bearer found in tracking filter: {}", filterUtils.getAuthToken());
 		}
 		
 		RequestContext ctx = RequestContext.getCurrentContext();
@@ -54,6 +58,11 @@ public class TrackingFilter extends ZuulFilter {
 	
 	private boolean isCorrelationIdPresent() {
 		return filterUtils.getCorrelationId() != null;
+	}
+	
+	
+	private boolean isAuthTokenPresent() {
+		return filterUtils.getAuthToken() != null;
 	}
 	
 	public String generateCorrelationId() {

@@ -1,18 +1,23 @@
-package com.itemhsaring.authorizationserver.security;
+package com.itemsharing.userservice.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 
 @Configuration
-@EnableResourceServer
-public class ResourceServer extends ResourceServerConfigurerAdapter {
-
+public class SecurityConfig extends ResourceServerConfigurerAdapter {
+	
+	private static final String [] PUBLIC_MATCHERS = {
+			
+	};
+	
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable();
-		http.authorizeRequests().anyRequest().permitAll();
+		http.authorizeRequests()
+			.antMatchers(PUBLIC_MATCHERS)
+			.permitAll()
+			.anyRequest()
+			.authenticated();
 	}
 
 }

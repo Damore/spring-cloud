@@ -13,4 +13,9 @@ spring:
         encrypt:
           enabled: false
 
+logging:
+  level:
+    com.itemsharing: DEBUG
+    org.springframework.web: DEBUG
+
           

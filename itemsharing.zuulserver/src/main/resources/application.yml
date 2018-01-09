@@ -6,8 +6,12 @@ liquibase:
   enabled: true
 
 security:
-  basic:
-    enabled: false
+  user:
+    password: none
+  oauth2:
+    client:
+      accessTokenUri: localhost:8901/oauth/token
+      clientId: clientapp
     
 eureka:
   instance:
@@ -20,8 +24,12 @@ eureka:
 
 zuul:
   routes:
-    userservice: /user/**
-    itemservice: /item/**
+    userservice: 
+      path: /user/**
+      sensitiveHeaders:
+    itemservice:
+      path: /item/**
+      sensitiveHeaders:
   ignored-service: '*'
   prefix: /api    
   
@@ -29,3 +37,8 @@ zuul:
 logging:
   level:
     com.itemsharing: DEBUG
+    org.springframework.web: DEBUG
+
+spring:
+  application:
+    name: zuul    

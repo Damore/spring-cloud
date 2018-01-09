@@ -1,9 +1,23 @@
 server:
   port: 8761
   
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8901/user
+
+signing:
+  key: 345345fsdgsf5345
+
+  
 eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
   server:
     wait-time-in-ms-when-sync-empty: 5
+
+logging:
+  level:
+    com.itemsharing: DEBUG
+    org.springframework.web: DEBUG
