@@ -39,6 +39,3 @@ logging:
     com.itemsharing: DEBUG
     org.springframework.web: DEBUG
 
-spring:
-  application:
-    name: zuul    

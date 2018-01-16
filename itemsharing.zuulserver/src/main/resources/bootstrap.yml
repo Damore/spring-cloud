@@ -1,6 +1,6 @@
 spring:
   application:
-    name: itemservice
+    name: zuul
   profiles:
     active: default
   zipking:

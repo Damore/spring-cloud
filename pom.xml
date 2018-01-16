@@ -33,6 +33,7 @@
 		<module>itemsharing.eurekaserver</module>
 		<module>itemsharing.zuulserver</module>
 		<module>itemhsaring.authorizationserver</module>
+		<module>itemsharing.zipkingserver</module>
 	</modules>
 
 	<dependencies>

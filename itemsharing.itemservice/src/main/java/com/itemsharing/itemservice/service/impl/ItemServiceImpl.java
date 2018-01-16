@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itemsharing.itemservice.client.UserFeignClient;
+import com.itemsharing.itemservice.client.UserRestTemplateClient;
 import com.itemsharing.itemservice.model.Item;
 import com.itemsharing.itemservice.model.Usuario;
 import com.itemsharing.itemservice.repository.ItemRepository;
@@ -32,6 +33,9 @@ public class ItemServiceImpl implements ItemService {
 	
 	@Autowired
 	private UserFeignClient userFeignClient;
+	
+	@Autowired
+	private UserRestTemplateClient userRestTemplateClient;
 	
 
 	@Override
@@ -91,15 +95,16 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	@HystrixCommand(commandProperties = {@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds", value = "1000")},
-	fallbackMethod = "buildFallbackUser",
-	threadPoolKey = "itemByUserThreadPool",
-	threadPoolProperties = {@HystrixProperty(name="coreSize", value = "30"),
-							@HystrixProperty(name="maxQueueSize", value = "10")})
+//	@HystrixCommand(commandProperties = {@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds", value = "5000")},
+//	fallbackMethod = "buildFallbackUser",
+//	threadPoolKey = "itemByUserThreadPool",
+//	threadPoolProperties = {@HystrixProperty(name="coreSize", value = "30"),
+//							@HystrixProperty(name="maxQueueSize", value = "10")})
 	public Usuario getUsuarioByUsername(String username) {
 //		return userService.findByUsername(username);
 //		 randomlyRunLong();
-		return userFeignClient.getUserByUsername(username);
+//		return userFeignClient.getUserByUsername(username);
+		return userRestTemplateClient.getUser(username);
 	}
 	
 	private void randomlyRunLong() {
